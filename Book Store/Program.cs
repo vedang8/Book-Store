@@ -1,7 +1,8 @@
 using Book_Store.Models.Domain;
 using Book_Store.Repositories.Abstract;
+using Book_Store.Repositories.Implementation;
 using Microsoft.EntityFrameworkCore;
-using YtBookStore.Repositories.Implementation;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
 
 builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
