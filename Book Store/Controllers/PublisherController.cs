@@ -1,13 +1,15 @@
 ﻿using Book_Store.Models.Domain;
 using Book_Store.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Book_Store.Controllers
+namespace Book_Store.Controllers0
 {
+    [Authorize]
     public class PublisherController : Controller
     {
-        private readonly IPublisher service;
-        public PublisherController(IPublisher service)
+        private readonly IPublisherService service;
+        public PublisherController(IPublisherService service)
         {
             this.service = service;
         }

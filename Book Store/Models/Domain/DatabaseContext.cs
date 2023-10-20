@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Models.Domain
 {
-    public class DatabaseContext:DbContext
+    public class DatabaseContext:IdentityDbContext 
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options):base (options) {
             //Database.EnsureCreated();

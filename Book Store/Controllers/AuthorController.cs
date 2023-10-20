@@ -1,9 +1,11 @@
 ﻿using Book_Store.Models.Domain;
 using Book_Store.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
 {
+    [Authorize]
     public class AuthorController : Controller
     {
         private readonly IAuthorService service;

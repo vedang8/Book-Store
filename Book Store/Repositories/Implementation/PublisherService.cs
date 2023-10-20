@@ -3,7 +3,7 @@ using Book_Store.Repositories.Abstract;
 
 namespace Book_Store.Repositories.Implementation
 {
-    public class PublisherService : IPublisher
+    public class PublisherService : IPublisherService
     {
         private readonly DatabaseContext context;
         public PublisherService(DatabaseContext context)

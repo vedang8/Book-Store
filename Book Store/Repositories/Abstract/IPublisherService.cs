@@ -2,7 +2,7 @@
 
 namespace Book_Store.Repositories.Abstract
 {
-    public interface IPublisher
+    public interface IPublisherService
     {
         bool Add(Publisher model);
         bool Update(Publisher model);
