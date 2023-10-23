@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
 {
-    [Authorize]
+    
     public class GenreController : Controller
     {
         private readonly IGenreService service;
@@ -13,11 +13,14 @@ namespace Book_Store.Controllers
         {
             this.service = service;
         }
+
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Add()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Add(Genre model)
         {
@@ -35,13 +38,14 @@ namespace Book_Store.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id)
         {
             var record = service.FindById(id);
             return View(record);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Update(Genre model)
         {
@@ -58,7 +62,7 @@ namespace Book_Store.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
 
@@ -66,6 +70,7 @@ namespace Book_Store.Controllers
             return RedirectToAction("GetAll");
         }
 
+        [Authorize(Roles = "Admin,User")]
         public IActionResult GetAll()
         {
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Book_Store.Controllers
 {
-    [Authorize]
+    
     public class BookController : Controller
     {
         private readonly IBookService bookService;
@@ -21,6 +21,8 @@ namespace Book_Store.Controllers
             this.publisherService = publisherService;
             this.authorService = authorService;
         }
+
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Add()
         {
             var model = new Book();
@@ -30,6 +32,7 @@ namespace Book_Store.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Add(Book model)
         {
@@ -50,7 +53,7 @@ namespace Book_Store.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id)
         {
             var model = bookService.FindById(id);
@@ -60,6 +63,7 @@ namespace Book_Store.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Update(Book model)
         {
@@ -79,7 +83,7 @@ namespace Book_Store.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
 
@@ -87,6 +91,7 @@ namespace Book_Store.Controllers
             return RedirectToAction("GetAll");
         }
 
+        [Authorize(Roles = "Admin,User")]
         public IActionResult GetAll()
         {
 

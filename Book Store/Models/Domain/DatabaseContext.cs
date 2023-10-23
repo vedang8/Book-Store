@@ -17,6 +17,6 @@ namespace Book_Store.Models.Domain
 
         public DbSet<Book> Book { get; set; }
 
-
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
